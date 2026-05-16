@@ -3,337 +3,286 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>AGRO EXPORT</title>
+<title>Agro Export</title>
 
 <style>
-
-*{
-  margin:0;
-  padding:0;
-  box-sizing:border-box;
-  font-family:Arial, Helvetica, sans-serif;
-}
-
 body{
-  background:#f5f5f5;
-  color:#222;
-  overflow-x:hidden;
-  transition:0.3s;
+  margin:0;
+  font-family:Arial, sans-serif;
+  background:#f2f2f2;
 }
 
-/* 🌙 MODO OSCURO */
-body.dark{
-  background:#121212;
-  color:#eee;
-}
-
-body.dark .welcome h1{
-  color:#7db4e6;
-}
-
-body.dark .source{
-  background:#1f2d3a;
-  border:1px solid #314a61;
-  color:#b8d7f1;
-}
-
-body.dark .contact-btn{
-  background:#1f3a52;
-}
-
-body.dark footer{
-  color:#aaa;
-}
-
-/* 🖼️ BANNER DELGADO */
+/* HEADER */
 header{
-  position:relative;
-  width:100%;
-  height:170px;
-  background:url('imagenes/banner.png') center/cover no-repeat;
-}
-
-.overlay{
-  position:absolute;
-  inset:0;
-  background:rgba(0,0,0,0.12);
-}
-
-/* ☰ BOTÓN MENÚ */
-.menu-btn{
-  position:absolute;
-  top:18px;
-  right:18px;
-  z-index:5;
-  cursor:pointer;
-  width:34px;
-  height:26px;
-  display:flex;
-  flex-direction:column;
-  justify-content:space-between;
-}
-
-.menu-btn span{
-  height:4px;
-  background:white;
-  border-radius:5px;
-}
-
-/* 🌙 BOTÓN OSCURO */
-.dark-btn{
-  position:absolute;
-  top:18px;
-  left:18px;
-  z-index:5;
-  width:34px;
-  height:34px;
-  border:none;
-  border-radius:10px;
-  background:rgba(255,255,255,0.2);
-  backdrop-filter:blur(5px);
+  background:linear-gradient(90deg,#0b7a2a,#17a34a);
   color:white;
-  cursor:pointer;
+  text-align:center;
+  padding:20px;
+  font-size:22px;
+  font-weight:bold;
+  letter-spacing:2px;
+}
+
+/* CONTENEDOR */
+.container{
+  padding:15px;
+  max-width:1200px;
+  margin:auto;
+}
+
+/* TARJETAS */
+.card{
+  background:white;
+  padding:18px;
+  border-radius:16px;
+  box-shadow:0 4px 12px rgba(0,0,0,0.06);
+  margin-bottom:15px;
+}
+
+/* INPUTS */
+input{
+  width:100%;
+  padding:12px;
+  margin:6px 0;
+  border-radius:10px;
+  border:1px solid #ccc;
   font-size:16px;
 }
 
-/* 📋 MENÚ LATERAL MÁS DELGADO */
-.side-menu{
-  position:fixed;
-  top:0;
-  right:-260px;
-  width:230px;
-  height:100%;
-  background:#27445D;
-  color:white;
-  padding:25px 20px;
-  transition:0.35s ease;
-  z-index:20;
-  box-shadow:-5px 0 15px rgba(0,0,0,0.2);
+input:focus{
+  border-color:green;
+  box-shadow:0 0 6px rgba(0,128,0,0.2);
+  outline:none;
 }
 
-.side-menu.active{
-  right:0;
+/* PRODUCTOS */
+.product{
+  display:flex;
+  gap:15px;
+  background:white;
+  padding:15px;
+  border-radius:16px;
+  box-shadow:0 4px 12px rgba(0,0,0,0.06);
+  margin-bottom:15px;
+  align-items:center;
+  overflow:hidden;
 }
 
-.side-menu h2{
-  margin-bottom:18px;
-  font-size:22px;
+/* IMAGEN */
+.product img{
+  width:80px;
+  height:80px;
+  border-radius:12px;
+  object-fit:cover;
 }
 
-.side-menu p{
-  margin:10px 0;
-  font-size:15px;
-}
-
-.backdrop{
-  position:fixed;
-  inset:0;
-  background:rgba(0,0,0,0.35);
-  opacity:0;
-  visibility:hidden;
-  transition:0.3s;
-  z-index:10;
-}
-
-.backdrop.active{
-  opacity:1;
-  visibility:visible;
-}
-
-.container{
-  max-width:1100px;
-  margin:auto;
-  padding:35px 20px;
-}
-
-.welcome h1{
-  font-size:38px;
-  color:#27445D;
-  margin-bottom:25px;
-}
-
-.welcome p{
+/* TITULO */
+.product h3{
+  margin:0;
   font-size:18px;
-  line-height:1.8;
-  margin-bottom:24px;
 }
 
-/* 🔗 FUENTES */
-.source{
-  display:inline-block;
-  margin-top:8px;
-  font-size:10px;
-  text-decoration:none;
-  padding:4px 10px;
-  border-radius:20px;
-  background:#e7f0f8;
-  color:#27445D;
-  border:1px solid #cfe2f3;
-  transition:0.2s;
+/* SLIDER FIX */
+input[type=range]{
+  width:100%;
+  max-width:100%;
+  margin:8px 0;
 }
 
-.source:hover{
-  transform:scale(1.03);
-}
-
-/* 📞 CONTACTO */
-.contact-btn{
-  display:block;
-  width:fit-content;
-  margin:50px auto 0;
-  background:#27445D;
-  color:white;
-  text-decoration:none;
-  padding:18px 30px;
-  border-radius:14px;
-  font-size:19px;
+/* PRECIO */
+.price{
+  color:green;
   font-weight:bold;
-  transition:0.2s;
+  font-size:18px;
 }
 
-.contact-btn:hover{
-  transform:scale(1.03);
+/* PAGO */
+.payment img{
+  width:80px;
+  border-radius:12px;
+  margin-right:10px;
+  cursor:pointer;
+  transition:0.3s;
 }
 
-footer{
-  text-align:center;
-  padding:25px;
-  color:#777;
-  font-size:14px;
+.payment img:hover{
+  transform:scale(1.05);
 }
 
-/* 📱 RESPONSIVE */
-@media(max-width:768px){
+.ok{
+  color:green;
+  font-size:13px;
+}
 
-  header{
-    height:130px;
+/* BOTÓN */
+button{
+  width:100%;
+  padding:14px;
+  border:none;
+  border-radius:12px;
+  background:linear-gradient(90deg,#0b7a2a,#17a34a);
+  color:white;
+  font-size:16px;
+  cursor:pointer;
+}
+
+/* PC VERSION */
+@media(min-width:900px){
+  .container{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:15px;
   }
 
-  .welcome h1{
-    font-size:28px;
+  #productos{
+    grid-column:span 2;
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:15px;
   }
 
-  .welcome p{
-    font-size:16px;
+  .product{
+    flex-direction:column;
+    text-align:center;
   }
-
 }
-
 </style>
+
 </head>
 
 <body>
 
-<div class="backdrop" id="backdrop"></div>
-
-<!-- ☰ MENÚ -->
-<div class="side-menu" id="sideMenu">
-  <h2>Integrantes</h2>
-
-  <p>• Nombre</p>
-  <p>• Nombre</p>
-  <p>• Nombre</p>
-  <p>• Nombre</p>
-</div>
-
-<header>
-
-  <div class="overlay"></div>
-
-  <!-- 🌙 BOTÓN OSCURO -->
-  <button class="dark-btn" id="darkBtn">
-    ☾
-  </button>
-
-  <!-- ☰ -->
-  <div class="menu-btn" id="menuBtn">
-    <span></span>
-    <span></span>
-    <span></span>
-  </div>
-
-</header>
+<header>AGRO EXPORT</header>
 
 <div class="container">
 
-<section class="welcome">
+  <!-- CLIENTE -->
+  <div class="card">
+    <h2>Datos del cliente</h2>
+    <input id="nombre" placeholder="Nombre">
+    <input id="apellido" placeholder="Apellido">
+  </div>
 
-<h1>Bienvenidos a Agro Export</h1>
+  <!-- PRODUCTOS -->
+  <div id="productos"></div>
 
-<p>
-Nicaragua posee una fuerte base agrícola, destacando la producción de granos básicos como maíz, frijol, arroz y sorgo. Estos productos representan una parte importante de la economía nacional y del comercio exterior.
-<br>
-<a class="source" href="https://www.bcn.gob.ni" target="_blank">
-Banco Central de Nicaragua
-</a>
-</p>
+  <!-- TOTAL -->
+  <div class="card">
+    <h2>Total general</h2>
+    <p id="totalGeneral" class="price">C$ 0</p>
+  </div>
 
-<p>
-La exportación agrícola utiliza sistemas de transporte terrestre, marítimo y aéreo para garantizar entregas rápidas y seguras hacia mercados internacionales.
-<br>
-<a class="source" href="https://www.inac.gob.ni" target="_blank">
-Instituto Nicaragüense de Aeronáutica Civil
-</a>
-</p>
+  <!-- PAGO -->
+  <div class="card">
+    <h2>Método de pago</h2>
 
-<p>
-El proceso de exportación incluye producción, selección, control de calidad, empaque especializado y trámites aduaneros internacionales.
-<br>
-<a class="source" href="https://www.vucen.gob.ni" target="_blank">
-VUCEN Nicaragua
-</a>
-</p>
+    <div class="payment">
+      <img src="imagenes/bac.png" onclick="setPago('BAC')">
+      <img src="imagenes/bampro.png" onclick="setPago('Banpro')">
+    </div>
 
-<p>
-La comercialización internacional permite generar empleo, fortalecer zonas rurales y aumentar la competitividad agrícola del país.
-<br>
-<a class="source" href="https://www.enabas.gob.ni" target="_blank">
-ENABAS
-</a>
-</p>
+    <p id="pagoEstado" class="ok"></p>
+  </div>
 
-<p>
-Los tratados comerciales facilitan la expansión de productos nicaragüenses hacia diferentes regiones del mundo.
-<br>
-<a class="source" href="https://www.mific.gob.ni" target="_blank">
-MIFIC
-</a>
-</p>
-
-<!-- 📞 BOTÓN -->
-<a class="contact-btn" href="tel:+50581319173">
-📞 Contactar: +505 8131 9173
-</a>
-
-</section>
+  <button onclick="enviar()">Enviar a WhatsApp</button>
 
 </div>
 
-<footer>
-© 2026 Agro Export - Página Informativa
-</footer>
-
 <script>
 
-const menuBtn = document.getElementById('menuBtn');
-const sideMenu = document.getElementById('sideMenu');
-const backdrop = document.getElementById('backdrop');
-const darkBtn = document.getElementById('darkBtn');
+const productos = [
+  {n:"Arroz", p:1450, img:"imagenes/arroz.png"},
+  {n:"Frijoles rojos", p:3200, img:"imagenes/frijolesrojos.png"},
+  {n:"Frijoles negros", p:3000, img:"imagenes/frijolesnegros.png"},
+  {n:"Maíz", p:900, img:"imagenes/maiz.png"},
+  {n:"Trigo", p:2600, img:"imagenes/trigo.png"}
+];
 
-menuBtn.onclick = () => {
-  sideMenu.classList.add('active');
-  backdrop.classList.add('active');
-};
+let cantidades = [0,0,0,0,0];
+let pago = "";
 
-backdrop.onclick = () => {
-  sideMenu.classList.remove('active');
-  backdrop.classList.remove('active');
-};
+/* RENDER */
+function render(){
+  const cont = document.getElementById("productos");
 
-/* 🌙 MODO OSCURO */
-darkBtn.onclick = () => {
-  document.body.classList.toggle('dark');
-};
+  productos.forEach((x,i)=>{
+    cont.innerHTML += `
+      <div class="product">
+        <img src="${x.img}">
+        <div style="width:100%">
+          <h3>${x.n}</h3>
+
+          <input type="range" min="0" max="20" value="0"
+          oninput="update(${i},this.value)">
+
+          <p>Quintales: <span id="q${i}">0</span></p>
+          <p class="price" id="p${i}">C$ 0</p>
+        </div>
+      </div>
+    `;
+  });
+
+  calc();
+}
+
+/* UPDATE */
+function update(i,val){
+  cantidades[i]=val;
+  calc();
+}
+
+/* CALCULAR */
+function calc(){
+  let total=0;
+
+  productos.forEach((x,i)=>{
+    let cant = Number(cantidades[i]);
+
+    let sub = x.p * cant;
+
+    document.getElementById("q"+i).innerText = cant;
+    document.getElementById("p"+i).innerText = "C$ "+sub;
+
+    total += sub;
+  });
+
+  document.getElementById("totalGeneral").innerText = "C$ "+total;
+}
+
+/* PAGO */
+function setPago(tipo){
+  pago = tipo;
+  document.getElementById("pagoEstado").innerText =
+  "Pago aplicado ✅";
+}
+
+/* WHATSAPP */
+function enviar(){
+
+  let nombre = document.getElementById("nombre").value;
+  let apellido = document.getElementById("apellido").value;
+
+  let msg = "AGRO EXPORT\n\n";
+  msg += "Cliente: "+nombre+" "+apellido+"\n\n";
+
+  productos.forEach((x,i)=>{
+    if(cantidades[i] > 0){
+      msg += x.n+" - "+cantidades[i]+" quintales - C$ "+(x.p*cantidades[i])+"\n";
+    }
+  });
+
+  msg += "\nMétodo de pago: "+pago;
+
+  localStorage.setItem("nombre",nombre);
+  localStorage.setItem("apellido",apellido);
+
+  let url = "https://wa.me/50581319173?text="+encodeURIComponent(msg);
+
+  window.open(url,"_blank");
+}
+
+/* INIT */
+render();
 
 </script>
 
