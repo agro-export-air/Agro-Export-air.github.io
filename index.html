@@ -28,7 +28,7 @@ body.dark{
 }
 
 body.dark .welcome h1{
-  color:#7db4e6;
+  color:#7db4e6;s
 }
 
 body.dark .source{
@@ -97,15 +97,35 @@ header{
   top:18px;
   left:18px;
   z-index:5;
-  width:34px;
-  height:34px;
+
+  width:40px !important;
+  height:40px !important;
+
+  min-width:40px;
+  max-width:40px;
+
   border:none;
-  border-radius:10px;
+  border-radius:12px;
+
   background:rgba(255,255,255,0.2);
   backdrop-filter:blur(5px);
+
   color:white;
   cursor:pointer;
-  font-size:16px;
+
+  font-size:18px;
+
+  display:flex;
+  align-items:center;
+  justify-content:center;
+
+  padding:0;
+  margin:0;
+
+  line-height:1;
+
+  overflow:hidden;
+
 }
 
 /* 📋 MENÚ */
@@ -331,8 +351,34 @@ footer{
   }
 
 }
+.separator{
+  height: 3px;
+  background: linear-gradient(to right, transparent, #27445D, transparent);
+  margin: 45px 0;
+  border-radius: 3px;
+}
+
+/* SPONSOR - MARCA */
+.sponsor {
+  text-align: center;
+  margin: 40px 0 30px 0;
+  padding: 20px 0;
+}
+
+.sponsor img {
+  max-width: 160px ←
+  height: auto;
+  opacity: 0.9;
+  transition: 0.3s;
+}
+
+.sponsor img:hover {
+  opacity: 1;
+  transform: scale(1.08);
+}
 
 </style>
+
 </head>
 
 <body>
@@ -369,37 +415,61 @@ footer{
 
 <section class="welcome">
 
-<h1>Bienvenidos a Agro Export</h1>
+<div class="info-box">
+
+<h1>Bienvenidos</h1>
 
 <p>
-Nicaragua posee una fuerte base agrícola, destacando la producción de granos básicos como maíz, frijol y arroz.
-<br>
-<a class="source" href="https://www.bcn.gob.ni" target="_blank">
-Banco Central de Nicaragua
-</a>
+Bienvenido a Agro Export, una plataforma dedicada a la visualización y simulación de exportación agrícola en Nicaragua.
+Nuestro objetivo es mostrar de manera moderna cómo funciona el comercio y distribución de granos básicos.
 </p>
+
+</div>
+
+<!-- ESPACIO -->
+<div class="separator"></div>
+
+<!-- 2 -->
+<div class="info-box">
+
+<h1>¿Qué es Agro Export?</h1>
 
 <p>
-La exportación agrícola utiliza transporte terrestre, marítimo y aéreo.
-<br>
-<a class="source" href="https://www.inac.gob.ni" target="_blank">
-INAC
-</a>
+Agro Export es una propuesta digital enfocada en la comercialización y exportación de productos agrícolas como arroz, maíz, trigo y frijoles.
+El sistema permite visualizar productos, calcular cantidades y simular pedidos de exportación.
 </p>
+
+</div>
+
+<div class="separator"></div>
+
+<!-- 3 -->
+<div class="info-box">
+
+<h1>¿Quiénes somos?</h1>
 
 <p>
-Los procesos incluyen selección, calidad y logística internacional.
-<br>
-<a class="source" href="https://www.vucen.gob.ni" target="_blank">
-VUCEN
-</a>
+Somos un equipo orientado a la innovación agrícola y tecnológica, buscando representar procesos modernos de logística, distribución y comercio internacional.
 </p>
 
-<a class="contact-btn" href="tel:+50581319173">
-📞 Contactar: +505 8131 9173
-</a>
+</div>
 
+<div class="separator"></div>
+
+<!-- 4 -->
+<div class="info-box">
+
+<h1>¿Cómo funciona?</h1>
+
+<p>
+El usuario puede seleccionar productos agrícolas, elegir cantidades en quintales, visualizar precios automáticos y generar pedidos mediante WhatsApp.
+La plataforma también integra métodos de pago visuales y diseño adaptable para dispositivos móviles y computadoras.
+</p>
+
+</div>
+<div class="separator"></div>
 </section>
+
 
 <!-- CATÁLOGO -->
 <h1 class="catalog-title">
@@ -456,6 +526,11 @@ Enviar a WhatsApp
 <footer>
 © 2026 Agro Export - Página Informativa
 </footer>
+
+<!-- IMAGEN DE MARCA / SPONSOR -->
+<div class="sponsor">
+  <img src="imagenes/marca.png" alt="Marca Sponsor">
+</div>
 
 <script>
 
@@ -606,7 +681,7 @@ function enviar(){
   msg += "\nMétodo de pago: " + pago;
 
   let url =
-  "https://wa.me/50581319173?text=" +
+  "https://wa.me/505XXXXXXXX?text=" +
   encodeURIComponent(msg);
 
   window.open(url,"_blank");
